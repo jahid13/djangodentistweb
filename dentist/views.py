@@ -56,6 +56,16 @@ def appointment(request):
         your_scheldule = request.POST['your-scheldule']
         your_time = request.POST['your-time']
         your_message = request.POST['your-message']
+        '''
+        # send email
+        appointment = your_name + "" + your_phone + " " + your_time + "" + your_address + "" + your_scheldule + "" + your_time + "" + your_message
+        send_mail(
+            'Appointment_request',  # subject
+            appointment,  # message
+            your_email,  # from email
+            ['assistant@doc.com'],  # to whom
+        )
+        '''
 
         return render(request, 'appointment.html', {
             'your_name': your_name,
@@ -66,5 +76,6 @@ def appointment(request):
             'your_message': your_message,
             'your_email': your_email
         })
+
     else:
         return render(request, 'home.html', {})
